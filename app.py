@@ -2,8 +2,10 @@ from flask import Flask
 from database import db
 from schemas import ma
 
-from models.users import Users
-from models.tasks import Tasks
+from models.user import User
+from models.task import Task
+
+from routes.userBP import user_blueprint
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -15,8 +17,13 @@ def create_app(config_name):
 
     return app
 
+def blueprint_config(app):
+    app.register_blueprint(user_blueprint, url_prefix='/users')
+
 if __name__ == '__main__':
     app = create_app('DevelopmentConfig')
+
+    blueprint_config(app)
 
     with app.app_context():
         db.drop_all()

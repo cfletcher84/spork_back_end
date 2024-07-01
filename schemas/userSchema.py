@@ -1,7 +1,7 @@
 from marshmallow import fields
 from schemas import ma
 
-class UsersSchema(ma.Schema):
+class UserSchema(ma.Schema):
     id = fields.Integer(required=False)
     first_name = fields.String(required=True)
     last_name = fields.String(required=True)
@@ -14,8 +14,8 @@ class UsersSchema(ma.Schema):
     class Meta:
         fields = ('id', 'first_name', 'last_name', 'email', 'username', 'password', 'spoons', 'spoons_used')
 
-user_schema = UsersSchema()
-users_schema = UsersSchema(many=True)
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
 
 
 

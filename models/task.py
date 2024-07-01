@@ -1,10 +1,10 @@
 from database import db, Base
 from sqlalchemy.orm import Mapped, mapped_column
 
-class Tasks(Base):
-    __tablename__ = 'Tasks'
+class Task(Base):
+    __tablename__ = 'tasks'
     id: Mapped[int] = mapped_column(primary_key=True)
-    user_id: Mapped[int] = mapped_column(db.ForeignKey('Users.id'))
+    user_id: Mapped[int] = mapped_column(db.ForeignKey('users.id'))
     task: Mapped[str] = mapped_column(db.String(255))
     description: Mapped[str] = mapped_column(db.String(500))
     date: Mapped[str] = mapped_column(db.String(200))
