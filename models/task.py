@@ -9,4 +9,4 @@ class Task(Base):
     description: Mapped[str] = mapped_column(db.String(500))
     date: Mapped[str] = mapped_column(db.String(200))
     spoons_needed: Mapped[int] = mapped_column(db.Integer())
-    user: Mapped['Users'] = db.relationship(back_populates='tasks')
+    # user: Mapped['User'] = db.relationship(back_populates='tasks')
