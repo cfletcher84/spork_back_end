@@ -6,6 +6,7 @@ from models.user import User
 from models.task import Task
 
 from routes.userBP import user_blueprint
+from routes.taskBP import task_blueprint
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -19,6 +20,7 @@ def create_app(config_name):
 
 def blueprint_config(app):
     app.register_blueprint(user_blueprint, url_prefix='/users')
+    app.register_blueprint(task_blueprint, url_prefix='/tasks')
 
 if __name__ == '__main__':
     app = create_app('DevelopmentConfig')
