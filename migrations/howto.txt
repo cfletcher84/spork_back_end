@@ -1,0 +1,5 @@
+flask db init
+
+flask db migrate -m "Message like git commmit"
+
+flask db upgrade/downgrade
