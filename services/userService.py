@@ -12,3 +12,5 @@ def save(user_data):
         return new_user
     
 
+def get_user(user_id):
+    return db.session.get(User, user_id)

@@ -14,3 +14,13 @@ def save():
 
     return user_schema.jsonify(user_save), 201
 
+def get_user(user_id):
+    user = userService.get_user(user_id)
+    if user:
+        return user_output_schema.jsonify(user)
+    else:
+        resp = {
+            "status": "error",
+            "message": f'A user with ID {user_id} does not exist.'
+        }
+        return jsonify(resp), 404

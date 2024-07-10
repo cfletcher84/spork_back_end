@@ -6,7 +6,7 @@ class TaskSchema(ma.Schema):
     user_id = fields.Integer(required=True)
     task = fields.String(required=True)
     description = fields.String(required=True)
-    date = fields.String(required=True)
+    date = fields.Date(required=False)
     spoons_needed = fields.Integer(required=True)
 
     class Meta:
