@@ -10,11 +10,12 @@ class UserSchema(ma.Schema):
     spoons = fields.Integer(required=True)
     spoons_used = fields.Integer(required=True)
 
-    class Meta:
-        fields = ('id', 'first_name', 'last_name', 'email', 'password', 'spoons', 'spoons_used')
+    # class Meta:
+    #     fields = ('id', 'first_name', 'last_name', 'email', 'spoons', 'spoons_used')
 
-user_schema = UserSchema()
-users_schema = UserSchema(many=True)
+user_input_schema = UserSchema()
+user_output_schema = UserSchema(exclude=['password'])
+users_schema = UserSchema(many=True, exclude=["password"])
 
 
 
