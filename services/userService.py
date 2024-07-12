@@ -2,7 +2,9 @@ from sqlalchemy.orm import Session
 from sqlalchemy import select
 from database import db
 from models.user import User
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
+from utils.util import encode_token
+
 
 def save(user_data):
     with Session(db.engine) as session:
@@ -20,3 +22,12 @@ def save(user_data):
 
 def get_user(user_id):
     return db.session.get(User, user_id)
+
+def get_token(email, password):
+    query = db.select(User).where(User.email == email)
+    user = db.session.execute(query).scalars().first()
+    if user is not None and check_password_hash(user.password, password):
+        auth_token = encode_token(user.id)
+        return auth_token
+    else:
+        return None

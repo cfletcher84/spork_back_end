@@ -16,6 +16,7 @@ class UserSchema(ma.Schema):
 user_input_schema = UserSchema()
 user_output_schema = UserSchema(exclude=['password'])
 users_schema = UserSchema(many=True, exclude=["password"])
+user_login_schema = UserSchema(only=["email", "password"])
 
 
 

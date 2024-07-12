@@ -9,6 +9,7 @@ from models.flareup import FlareUp
 from routes.userBP import user_blueprint
 from routes.taskBP import task_blueprint
 from routes.flareupBP import flare_blueprint
+from routes.tokenBP import token_blueprint
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -25,6 +26,7 @@ def blueprint_config(app):
     app.register_blueprint(user_blueprint, url_prefix='/users')
     app.register_blueprint(task_blueprint, url_prefix='/tasks')
     app.register_blueprint(flare_blueprint, url_prefix='/flareups')
+    app.register_blueprint(token_blueprint, url_prefix='/token')
 
 if __name__ == '__main__':
     app = create_app('DevelopmentConfig')
