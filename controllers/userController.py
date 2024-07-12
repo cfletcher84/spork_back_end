@@ -9,6 +9,8 @@ def save():
         user_save = userService.save(user_data)
     except ValidationError as err:
         return jsonify(err.messages), 400
+    except ValueError as err:
+        return jsonify({"error": str(err)}), 400
     
 
 
