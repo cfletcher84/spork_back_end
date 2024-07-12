@@ -8,10 +8,7 @@ class UserSchema(ma.Schema):
     email = fields.String(required=True)
     password = fields.String(required=True)
     spoons = fields.Integer(required=True)
-    spoons_used = fields.Integer(required=True)
-
-    # class Meta:
-    #     fields = ('id', 'first_name', 'last_name', 'email', 'spoons', 'spoons_used')
+    profile_pic = fields.String(required=False)
 
 user_input_schema = UserSchema()
 user_output_schema = UserSchema(exclude=['password'])

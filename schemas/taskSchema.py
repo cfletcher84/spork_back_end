@@ -8,6 +8,7 @@ class TaskSchema(ma.Schema):
     description = fields.String(required=True)
     date = fields.Date(required=False)
     spoons_needed = fields.Integer(required=True)
+    icon = fields.String(required=False)
 
     class Meta:
         fields = ('id', 'user_id', 'task', 'description', 'date', 'spoons_needed', 'duration', 'time_of_day')
