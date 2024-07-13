@@ -23,10 +23,10 @@ def create_app(config_name):
     return app
 
 def blueprint_config(app):
-    app.register_blueprint(user_blueprint, url_prefix='https://spork-ortf.onrender.com/users')
-    app.register_blueprint(task_blueprint, url_prefix='https://spork-ortf.onrender.com/tasks')
-    app.register_blueprint(flare_blueprint, url_prefix='https://spork-ortf.onrender.com/flareups')
-    app.register_blueprint(token_blueprint, url_prefix='https://spork-ortf.onrender.com/token')
+    app.register_blueprint(user_blueprint, url_prefix='/users')
+    app.register_blueprint(task_blueprint, url_prefix='/tasks')
+    app.register_blueprint(flare_blueprint, url_prefix='/flareups')
+    app.register_blueprint(token_blueprint, url_prefix='/token')
 
 if __name__ == '__main__':
     app = create_app('DevelopmentConfig')
