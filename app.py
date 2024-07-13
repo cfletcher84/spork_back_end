@@ -1,6 +1,7 @@
 from flask import Flask
 from database import db, migrate
 from schemas import ma
+from dotenv import load_dotenv
 
 from models.user import User
 from models.task import Task
@@ -10,6 +11,8 @@ from routes.userBP import user_blueprint
 from routes.taskBP import task_blueprint
 from routes.flareupBP import flare_blueprint
 from routes.tokenBP import token_blueprint
+
+load_dotenv()
 
 def create_app(config_name):
     app = Flask(__name__)
