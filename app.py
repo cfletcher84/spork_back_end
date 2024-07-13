@@ -22,6 +22,7 @@ def create_app(config_name):
     db.init_app(app)
     ma.init_app(app)
     migrate.init_app(app, db)
+    blueprint_config(app)
 
     return app
 
@@ -33,8 +34,6 @@ def blueprint_config(app):
 
 if __name__ == '__main__':
     app = create_app('DevelopmentConfig')
-
-    blueprint_config(app)
     
     app.run(debug=True)
 
