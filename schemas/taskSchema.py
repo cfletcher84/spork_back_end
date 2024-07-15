@@ -8,7 +8,7 @@ class TaskSchema(ma.Schema):
     description = fields.String(required=True)
     date = fields.Date(required=False)
     spoons_needed = fields.Integer(required=True)
-    icon = fields.String(required=False)
+    # icon = fields.String(required=False)
     duration = fields.String(required=True)
     time_of_day = fields.String(required=True)
 
