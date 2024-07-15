@@ -12,5 +12,5 @@ class Task(Base):
     spoons_needed: Mapped[int] = mapped_column(db.Integer())
     duration: Mapped[str] = mapped_column(db.String(100))
     time_of_day: Mapped[str] = mapped_column(db.String(100))
-    icon: Mapped[str] = mapped_column(db.String(100))
+    icon: Mapped[str] = mapped_column(db.String(100), nullable=True)
     user: Mapped['User'] = db.relationship(back_populates='task')
