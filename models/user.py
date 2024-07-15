@@ -8,6 +8,6 @@ class User(Base):
     last_name: Mapped[str] = mapped_column(db.String(255), nullable=False)
     email: Mapped[str] = mapped_column(db.String(300), unique=True)
     password: Mapped[str] = mapped_column(db.String(500), nullable=False)
-    spoons: Mapped[int] = mapped_column(nullable=False)
+    spoons: Mapped[int] = mapped_column(nullable=False)  # ASk about constant value of 12
     # profile_pic: Mapped[str] = mapped_column(db.String(100), nullable=True)
     task: Mapped['Task'] = db.relationship(back_populates='user')

@@ -8,7 +8,7 @@ def find_all():
     tasks = taskService.find_all()
     return tasks_schema.jsonify(tasks), 200
 
-@token_auth.login_required
+# @token_auth.login_required
 def save():
     try:
         task_data = task_schema.load(request.json)
