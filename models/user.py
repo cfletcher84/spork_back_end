@@ -9,5 +9,5 @@ class User(Base):
     email: Mapped[str] = mapped_column(db.String(300), unique=True)
     password: Mapped[str] = mapped_column(db.String(500), nullable=False)
     spoons: Mapped[int] = mapped_column(nullable=False)
-    profile_pic: Mapped[str] = mapped_column(db.String(100))
+    profile_pic: Mapped[str] = mapped_column(db.String(100), nullable=True)
     task: Mapped['Task'] = db.relationship(back_populates='user')
