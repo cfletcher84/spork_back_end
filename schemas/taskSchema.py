@@ -17,3 +17,4 @@ class TaskSchema(ma.Schema):
         
 task_schema = TaskSchema()
 tasks_schema = TaskSchema(many=True)
+user_task_schema = TaskSchema(only=['task'])

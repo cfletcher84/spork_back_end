@@ -16,3 +16,5 @@ def save(task_data):
         session.refresh(new_task)
         return new_task
 
+def get_user_tasks(user_id):
+    return db.session.get(Task, user_id)
