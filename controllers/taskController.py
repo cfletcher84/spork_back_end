@@ -8,6 +8,7 @@ from database import db
 
 def find_all():
     tasks = taskService.find_all()
+    print(tasks)
     return tasks_schema.jsonify(tasks), 200
 
 # @token_auth.login_required
@@ -21,11 +22,12 @@ def save():
 
 def get_user_tasks(user_id):
     task = taskService.get_user_tasks(user_id)
+    print(f'{task} for {user_id}')
     if task:
-        return user_task_schema.jsonify(task)
+        return tasks_schema.jsonify(task)
     else:
         resp = {
             "status": "error",
-            "message": f'The user {user_id} has no activites completed.'
+            "message": f'The user id {user_id}, has no activites completed.'
         }
         return jsonify(resp), 404

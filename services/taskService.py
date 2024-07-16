@@ -17,4 +17,7 @@ def save(task_data):
         return new_task
 
 def get_user_tasks(user_id):
-    return db.session.get(Task, user_id)
+    with Session(db.engine) as session:
+        tasks = session.query(Task).filter_by(user_id=user_id).all()
+        print(f"Tasks found for user_id {user_id}: {tasks}") 
+        return tasks 
