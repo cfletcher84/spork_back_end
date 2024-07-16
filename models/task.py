@@ -25,7 +25,7 @@ class Task(Base):
     user_id: Mapped[int] = mapped_column(db.ForeignKey('users.id'), nullable=False)
     task: Mapped[str] = mapped_column(db.String(255))
     description: Mapped[str] = mapped_column(db.String(500))
-    date: Mapped[datetime.date] = mapped_column(db.DateTime, nullable=False, default=lambda: datetime.date(datetime.now()))
+    # date: Mapped[datetime.date] = mapped_column(db.DateTime, nullable=False, default=lambda: datetime.date(datetime.now()))
     spoons_needed: Mapped[int] = mapped_column(db.Integer())
     duration: Mapped[str] = mapped_column(db.String(100))
     time_of_day: Mapped[str] = mapped_column(db.String(100))
