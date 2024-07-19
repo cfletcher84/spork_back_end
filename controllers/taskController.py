@@ -28,6 +28,6 @@ def get_user_tasks(user_id):
     else:
         resp = {
             "status": "error",
-            "message": f'The user id {user_id}, has no activites completed.'
+            "message": f'The user id {user_id}, has no activities completed.'
         }
         return jsonify(resp), 404
