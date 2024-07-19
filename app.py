@@ -2,6 +2,7 @@ from flask import Flask
 from database import db, migrate
 from schemas import ma
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 from models.user import User
 from models.task import Task
@@ -16,6 +17,7 @@ load_dotenv()
 
 def create_app(config_name):
     app = Flask(__name__)
+    cors = CORS(app)
 
     app.config.from_object(f'config.{config_name}')
 

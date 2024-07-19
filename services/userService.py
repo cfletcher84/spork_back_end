@@ -31,3 +31,12 @@ def get_token(email, password):
         return auth_token
     else:
         return None
+    
+# def update_spoons(user_id, user_data):
+#     with Session(db.engine) as session:
+#         with session.begin():
+#             query = db.select(User).where(User.id == user_id)
+#             user = db.session.execute(query).scalars.first()
+#             if user is not None:
+#                 new_user = User(spoons=user_data['spoons'])
+#                 session.add(new_user)
