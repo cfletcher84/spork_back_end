@@ -13,7 +13,7 @@ def save(user_data):
             email_check = session.execute(email_query).scalars().first()
             if email_check is not None:
                 raise ValueError("Customer with that email already exists.")
-            new_user = User(first_name=user_data['first_name'], last_name=user_data['last_name'], email=user_data['email'], spoons=user_data['spoons'], password=generate_password_hash(user_data['password']))
+            new_user = User(first_name=user_data['first_name'], last_name=user_data['last_name'], email=user_data['email'], password=generate_password_hash(user_data['password']))
             session.add(new_user)
             session.commit()
         session.refresh(new_user)
