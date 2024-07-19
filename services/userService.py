@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import select
 from database import db
 from models.user import User
+from schemas.userSchema import user_output_schema
 from werkzeug.security import generate_password_hash, check_password_hash
 from utils.util import encode_token
 
@@ -22,6 +23,11 @@ def save(user_data):
 
 def get_user(user_id):
     return db.session.get(User, user_id)
+
+def get_user_by_email(email):
+    query = db.select(User).where(User.email == email)
+    user = db.session.execute(query).scalars().first()
+    return user
 
 def get_token(email, password):
     query = db.select(User).where(User.email == email)
