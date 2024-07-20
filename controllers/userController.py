@@ -32,7 +32,6 @@ def get_token():
         user_data = user_login_schema.load(request.json)
         token = userService.get_token(user_data['email'], user_data['password'])
         user = userService.get_user_by_email(user_data['email'])
-
         if token:
             extra_data = user_output_schema.dump(user)
             resp = {
@@ -40,7 +39,6 @@ def get_token():
                 "message": "Succesfull authentication",
                 "token": token,
                 "user_data": extra_data
-
             }
             return jsonify(resp), 200
         else:

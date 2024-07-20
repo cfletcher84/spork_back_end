@@ -2,9 +2,9 @@ from sqlalchemy.orm import Session
 from database import db
 from models.task import Task
 import datetime
+from sqlalchemy import and_
 
 dt = datetime.date.today()
-print(type(dt))
 
 def find_all():
     query = db.select(Task)
@@ -24,4 +24,16 @@ def get_user_tasks(user_id):
     with Session(db.engine) as session:
         tasks = session.query(Task).filter_by(user_id=user_id).all()
         print(f"Tasks found for user_id {user_id}: {tasks}") 
-        return tasks 
+        return tasks
+    
+def get_between_tasks(user_id, start_date, end_date):
+    try:
+        with Session(db.engine) as session:
+            tasks = session.query(Task).filter_by(and_(
+                Task.user_id == user_id,
+                Task.date >= start_date,
+                Task.date <= end_date
+            )).all()
+        return tasks
+    except Exception as e:
+        return None

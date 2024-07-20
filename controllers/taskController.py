@@ -8,7 +8,6 @@ from database import db
 
 def find_all():
     tasks = taskService.find_all()
-    print(tasks)
     return tasks_schema.jsonify(tasks), 200
 
 # @token_auth.login_required
@@ -29,5 +28,16 @@ def get_user_tasks(user_id):
         resp = {
             "status": "error",
             "message": f'The user id {user_id}, has no activities completed.'
+        }
+        return jsonify(resp), 404
+    
+def get_between_tasks(user_id):
+    tasks = taskService.get_between_tasks(user_id)
+    if tasks:
+        return user_task_schema.jsonify(tasks)
+    else:
+        resp = {
+            "status": "error",
+            "message": f'The user {user_id} has no activities completed.'
         }
         return jsonify(resp), 404

@@ -19,7 +19,7 @@ def save(user_data):
             session.commit()
         session.refresh(new_user)
         return new_user
-    
+
 
 def get_user(user_id):
     return db.session.get(User, user_id)
