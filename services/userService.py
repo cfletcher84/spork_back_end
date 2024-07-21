@@ -5,6 +5,7 @@ from models.user import User
 from schemas.userSchema import user_output_schema
 from werkzeug.security import generate_password_hash, check_password_hash
 from utils.util import encode_token
+from flask import jsonify, request
 
 
 def save(user_data):
@@ -38,11 +39,19 @@ def get_token(email, password):
     else:
         return None
     
-# def update_spoons(user_id, user_data):
-#     with Session(db.engine) as session:
-#         with session.begin():
-#             query = db.select(User).where(User.id == user_id)
-#             user = db.session.execute(query).scalars.first()
-#             if user is not None:
-#                 new_user = User(spoons=user_data['spoons'])
-#                 session.add(new_user)
+
+def update_spoons(user_id):
+    try:
+        user = get_user(user_id)
+        if not user:
+            return jsonify({'error': 'User does not exist'})
+        data = request.get_json()
+        new_spoons = data.get('spoons')
+        user.spoons = new_spoons
+        db.session.commit()
+        return jsonify({'message': 'Spoons updated.'})
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)})
+    finally:
+        db.session.close()

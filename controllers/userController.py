@@ -2,6 +2,10 @@ from flask import request, jsonify
 from schemas.userSchema import user_input_schema, user_output_schema, user_login_schema
 from services import userService
 from marshmallow import ValidationError
+from database import db
+from models.user import User
+from sqlalchemy.orm import Session
+
 
 def save():
     try:
@@ -50,3 +54,4 @@ def get_token():
             return jsonify(resp), 401
     except ValidationError as err:
         return jsonify(err.messages), 400
+    
