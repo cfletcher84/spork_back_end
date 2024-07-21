@@ -44,14 +44,14 @@ def update_spoons(user_id):
     try:
         user = get_user(user_id)
         if not user:
-            return jsonify({'error': 'User does not exist'})
+            return jsonify({'error': 'User does not exist'}), 404
         data = request.get_json()
         new_spoons = data.get('spoons')
         user.spoons = new_spoons
         db.session.commit()
-        return jsonify({'message': 'Spoons updated.'})
+        return jsonify({'message': 'Spoons updated.'}), 201
     except Exception as e:
         db.session.rollback()
-        return jsonify({'error': str(e)})
+        return jsonify({'error': str(e)}), 404
     finally:
         db.session.close()
