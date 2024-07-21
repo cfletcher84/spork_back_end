@@ -38,6 +38,6 @@ def get_between_tasks(user_id):
     else:
         resp = {
             "status": "error",
-            "message": f'The user {user_id} has no activities completed.'
+            "message": f'The user {user_id} has no activities completed between these dates.'
         }
         return jsonify(resp), 404
