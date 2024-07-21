@@ -24,22 +24,17 @@ def save(task_data):
         return None
 
 def get_user_tasks(user_id):
-    try:
-        with Session(db.engine) as session:
-            tasks = session.query(Task).filter_by(user_id=user_id).all()
-            print(f"Tasks found for user_id {user_id}: {tasks}") 
-            return tasks
-    except Exception as e:
-        return None
+    with Session(db.engine) as session:
+        tasks = session.query(Task).filter_by(user_id=user_id).all()
+        print(f"Tasks found for user_id {user_id}: {tasks}") 
+        return tasks
+
     
 def get_between_tasks(user_id, start_date, end_date):
-    try:
-        with Session(db.engine) as session:
-            tasks = session.query(Task).filter_by(and_(
-                Task.user_id == user_id,
-                Task.date >= start_date,
-                Task.date <= end_date
-            )).all()
-        return tasks
-    except Exception as e:
-        return None
+    with Session(db.engine) as session:
+        tasks = session.query(Task).filter_by(and_(
+            Task.user_id == user_id,
+            Task.date >= start_date,
+            Task.date <= end_date
+        )).all()
+    return tasks

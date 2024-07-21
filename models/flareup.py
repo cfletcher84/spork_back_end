@@ -8,4 +8,4 @@ class FlareUp(Base):
     user_id: Mapped[int] = mapped_column(db.ForeignKey('users.id'), nullable=False)
     flare: Mapped[bool] = mapped_column(db.Boolean)
     date: Mapped[str] = mapped_column(db.String(20), nullable=True)
-    user: Mapped['User'] = relationship('User)', back_populates='flares')
+    # user: Mapped['User'] = relationship('User', back_populates='flares')
