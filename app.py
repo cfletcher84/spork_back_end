@@ -12,6 +12,7 @@ from routes.userBP import user_blueprint
 from routes.taskBP import task_blueprint
 from routes.flareupBP import flare_blueprint
 from routes.tokenBP import token_blueprint
+from routes.spoonsBP import spoons_blueprint
 
 load_dotenv()
 
@@ -33,6 +34,7 @@ def blueprint_config(app):
     app.register_blueprint(task_blueprint, url_prefix='/tasks')
     app.register_blueprint(flare_blueprint, url_prefix='/flareups')
     app.register_blueprint(token_blueprint, url_prefix='/token')
+    app.register_blueprint(spoons_blueprint, url_prefix='/spoons')
 
 if __name__ == '__main__':
     app = create_app('DevelopmentConfig')
