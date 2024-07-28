@@ -7,3 +7,4 @@ migrate = Migrate()
 from models.user import User
 from models.task import Task
 from models.flareup import FlareUp 
+from models.spoons import Spoons

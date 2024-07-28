@@ -2,7 +2,6 @@ from sqlalchemy.orm import Session
 from sqlalchemy import select
 from database import db
 from models.user import User
-from schemas.userSchema import user_output_schema
 from werkzeug.security import generate_password_hash, check_password_hash
 from utils.util import encode_token
 from flask import jsonify, request
