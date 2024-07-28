@@ -10,6 +10,8 @@ class User(Base):
     password: Mapped[str] = mapped_column(db.String(500), nullable=False)
     # spoons: Mapped[int] = mapped_column(nullable=False, default=12)
     profile_pic: Mapped[str] = mapped_column(db.String(100), nullable=True)
-    tasks: Mapped[list['Task']] = relationship('Task', back_populates='user') 
+    tasks: Mapped[list['Task']] = relationship('Task', back_populates='user')
+    spoons: Mapped['Spoons'] = relationship('Spoons', back_populates='spoons')
     
 from models.task import Task
+from models.spoons import Spoons

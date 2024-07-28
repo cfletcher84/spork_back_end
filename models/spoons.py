@@ -7,7 +7,7 @@ class Spoons(Base):
     spoons: Mapped[int] = mapped_column(nullable=False, default=12)
     date: Mapped[str] = mapped_column(db.String(20), nullable=True)
     user_id: Mapped[int] = mapped_column(db.ForeignKey('users.id'), nullable=False)
-    user: Mapped['User'] = relationship('Spoons', back_populates='user') 
+    user: Mapped['User'] = relationship('User', back_populates='spoons') 
 
     
 from models.user import User
